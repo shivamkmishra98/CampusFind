@@ -1,484 +1,359 @@
-<div align="center">
+# 🔍 CampusFind — Campus Lost & Found Management System
 
-# 🔍 Lost & Found Portal
+<p align="center">
+  A full-stack MERN application that helps students report lost belongings, discover found items, and manage ownership claims in one place.
+</p>
 
-**A full-stack campus lost and found management system built with the MERN stack.**
+<p align="center">
+  <img src="https://img.shields.io/badge/React-19-61DAFB?logo=react&logoColor=black" alt="React 19" />
+  <img src="https://img.shields.io/badge/Node.js-20%2B-339933?logo=nodedotjs&logoColor=white" alt="Node.js" />
+  <img src="https://img.shields.io/badge/Express-5-000000?logo=express&logoColor=white" alt="Express" />
+  <img src="https://img.shields.io/badge/MongoDB-Atlas-47A248?logo=mongodb&logoColor=white" alt="MongoDB Atlas" />
+  <img src="https://img.shields.io/badge/License-MIT-blue.svg" alt="License" />
+</p>
 
-Help your peers reunite with their belongings — report lost items, discover found ones, and manage claims seamlessly.
-
-[![Node.js](https://img.shields.io/badge/Node.js-20+-339933?style=for-the-badge&logo=node.js&logoColor=white)](https://nodejs.org/)
-[![React](https://img.shields.io/badge/React-19-61DAFB?style=for-the-badge&logo=react&logoColor=black)](https://react.dev/)
-[![MongoDB](https://img.shields.io/badge/MongoDB-Atlas-47A248?style=for-the-badge&logo=mongodb&logoColor=white)](https://www.mongodb.com/atlas)
-[![Express](https://img.shields.io/badge/Express-5-000000?style=for-the-badge&logo=express&logoColor=white)](https://expressjs.com/)
-[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-v4-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white)](https://tailwindcss.com/)
-[![Vite](https://img.shields.io/badge/Vite-6-646CFF?style=for-the-badge&logo=vite&logoColor=white)](https://vitejs.dev/)
-[![Cloudinary](https://img.shields.io/badge/Cloudinary-Images-3448C5?style=for-the-badge&logo=cloudinary&logoColor=white)](https://cloudinary.com/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge)](LICENSE)
-
-</div>
+**GitHub Repository:** [shivamkmishra98/CampusFind](https://github.com/shivamkmishra98/CampusFind)
 
 ---
 
-## 📖 Table of Contents
+## 📌 About the Project
 
-- [About](#-about)
-- [Features](#-features)
-- [Tech Stack](#-tech-stack)
-- [Architecture](#-architecture)
-- [Getting Started](#-getting-started)
-- [Environment Variables](#-environment-variables)
-- [API Reference](#-api-reference)
-- [Project Structure](#-project-structure)
-- [Deployment](#-deployment)
-- [Contributing](#-contributing)
-- [License](#-license)
+CampusFind is a campus-focused Lost & Found web application designed to make it easier for students to reconnect with misplaced belongings.
 
----
+Students can report lost or found items, browse listings, search by keywords, filter results, and submit claims to verify ownership. Item owners can manage their listings and respond to claims through a personalized dashboard.
 
-## 📌 About
+The project uses the **MERN stack** with MongoDB Atlas for cloud data storage and JWT-based authentication for protected user operations.
 
-Lost & Found Portal is a full-stack web application designed for college campuses. Students can report items they've lost or found, browse and search through listings, upload photos, and submit ownership claims — all through a clean, modern interface.
-
-Built as a production-ready MERN stack project with best practices including JWT authentication via httpOnly cookies, image hosting on Cloudinary, full-text search with MongoDB indexes, and a responsive UI with Tailwind CSS v4.
-
----
-
-## ✨ Features
+## ✨ Key Features
 
 ### 🔐 Authentication & Security
+- User registration and login.
+- Password hashing with bcrypt.
+- JWT-based authentication using HTTP-only cookies.
+- Protected routes and authorization middleware.
+- Ownership checks for item management.
 
-- Secure registration and login with encrypted passwords (bcrypt)
-- JWT-based session management via **httpOnly cookies** (XSS-safe)
-- Protected API routes with middleware-level authorization
-- Ownership verification on all write operations
-
-### 📦 Item Management
-
-- Report **lost** or **found** items with rich details
-- Upload **multiple images** per item (stored on Cloudinary CDN)
-- Full **CRUD** — create, read, update, delete with ownership checks
-- Automatic image cleanup on item deletion
+### 📦 Lost & Found Item Management
+- Create lost and found item listings.
+- Add item descriptions, categories, locations, and dates.
+- Upload item images using Cloudinary.
+- Update and delete your own listings.
+- Browse item details.
 
 ### 🔎 Search & Discovery
+- Search listings by keywords.
+- Filter by lost or found status.
+- Filter items by category.
+- Sort listings and navigate paginated results.
 
-- **Full-text search** across titles and descriptions (MongoDB text index)
-- Filter by **type** (lost/found), **category**, and **sort order**
-- Server-side **pagination** with 12 items per page
-- URL-synced filters — shareable and bookmarkable search results
-- Debounced search input for optimized API calls
+### 🤝 Ownership Claims
+- Submit a claim with a supporting message.
+- View claims received on your listings.
+- Approve or reject incoming claims.
+- Track the status of submitted claims.
 
-### 🤝 Claims System
+### 📊 User Dashboard
+- View personal item listings.
+- Manage posted items.
+- Review received claims.
+- Track submitted claims and their status.
+- View dashboard statistics.
 
-- Submit claims on items with a descriptive message
-- Item owners can **approve** or **reject** claims from their dashboard
-- Auto-reject remaining pending claims when one is approved
-- Duplicate and self-claim prevention at the database level
+### 📱 Responsive Interface
+- React-based user interface.
+- Responsive layouts for desktop, tablet, and mobile.
+- Client-side routing.
+- Form validation and loading states.
 
-### 📊 Dashboard
+## 🛠️ Technology Stack
 
-- At-a-glance statistics: total items, resolved items, active claims
-- **My Items** tab — manage your posted items (edit/delete)
-- **Claims Received** tab — approve or reject incoming claims
-- **Claims Sent** tab — track the status of your submitted claims
+| Layer | Technologies |
+|---|---|
+| Frontend | React 19, Vite 6 |
+| Styling | Tailwind CSS v4 |
+| Routing | React Router v7 |
+| Forms & Validation | React Hook Form, Zod |
+| HTTP Requests | Axios |
+| Backend | Node.js, Express 5 |
+| Database | MongoDB Atlas |
+| Data Modeling | Mongoose |
+| Authentication | JWT, bcryptjs, HTTP-only cookies |
+| Image Storage | Cloudinary |
+| File Uploads | Multer |
+| Security | Helmet |
 
-### 🎨 User Experience
+## 🏗️ System Architecture
 
-- Fully **responsive** design — mobile, tablet, and desktop
-- **Sticky navigation** with mobile hamburger menu
-- Skeleton loading states during data fetches
-- Clean, modern UI with Inter font and consistent design language
-
----
-
-## 🛠 Tech Stack
-
-### Frontend
-
-| Technology          | Purpose                 |
-| :------------------ | :---------------------- |
-| **React 19**        | UI library              |
-| **Vite 6**          | Build tool & dev server |
-| **Tailwind CSS v4** | Utility-first styling   |
-| **React Router v7** | Client-side routing     |
-| **React Hook Form** | Form state management   |
-| **Zod**             | Schema validation       |
-| **Axios**           | HTTP client             |
-| **date-fns**        | Date formatting         |
-
-### Backend
-
-| Technology        | Purpose                     |
-| :---------------- | :-------------------------- |
-| **Node.js 20+**   | Runtime environment         |
-| **Express 5**     | Web framework               |
-| **MongoDB Atlas** | Cloud database              |
-| **Mongoose**      | ODM / data modeling         |
-| **JWT**           | Authentication tokens       |
-| **bcryptjs**      | Password hashing            |
-| **Cloudinary**    | Image hosting CDN           |
-| **Multer**        | Multipart form-data parsing |
-| **Helmet**        | HTTP security headers       |
-| **Morgan**        | Request logging             |
-
----
-
-## 🏗 Architecture
-
+```text
+┌──────────────────────────┐
+│       React Client       │
+│     Vite + Tailwind CSS  │
+└────────────┬─────────────┘
+             │ HTTP / REST API
+             ▼
+┌──────────────────────────┐
+│     Express Backend      │
+│ Authentication & Logic   │
+└─────────┬────────┬───────┘
+          │        │
+          ▼        ▼
+┌──────────────┐ ┌──────────────┐
+│ MongoDB Atlas│ │  Cloudinary  │
+│ Application  │ │ Item Images  │
+│    Data      │ │              │
+└──────────────┘ └──────────────┘
 ```
-┌──────────────────┐         ┌──────────────────┐         ┌──────────────────┐
-│                  │         │                  │         │                  │
-│   React Client   │◄───────►│  Express Server  │◄───────►│  MongoDB Atlas   │
-│   (Vite + TW)    │  HTTP   │  (REST API)      │ Mongoose│  (Cloud DB)      │
-│                  │         │                  │         │                  │
-└──────────────────┘         └────────┬─────────┘         └──────────────────┘
-                                      │
-                                      │ Upload
-                                      ▼
-                             ┌──────────────────┐
-                             │                  │
-                             │   Cloudinary     │
-                             │   (Image CDN)    │
-                             │                  │
-                             └──────────────────┘
-```
-
-**Auth Flow:**
-
-```
-Client ──POST /register──► Server ──hash password──► MongoDB
-                                   ──sign JWT──►
-Server ──Set-Cookie: token (httpOnly)──► Client
-Client ──GET /me (cookie auto-sent)──► Server ──verify JWT──► return user
-```
-
----
 
 ## 🚀 Getting Started
 
+Follow these instructions to run CampusFind locally.
+
 ### Prerequisites
 
-| Requirement   | Version       |
-| :------------ | :------------ |
-| Node.js       | v20 or higher |
-| npm           | v10 or higher |
-| MongoDB Atlas | Free M0 tier  |
-| Cloudinary    | Free account  |
+Install the following before starting:
 
-### Installation
+- [Node.js](https://nodejs.org/) — version 20 or higher.
+- npm — installed with Node.js.
+- [MongoDB Atlas](https://www.mongodb.com/atlas) account and database.
+- [Cloudinary](https://cloudinary.com/) account for image uploads.
+- Git.
 
-**1. Clone the repository**
+### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/lost-and-found-portal.git
-cd lost-and-found-portal
+git clone https://github.com/shivamkmishra98/CampusFind.git
+cd CampusFind
 ```
 
-**2. Install server dependencies**
+### 2. Install Backend Dependencies
 
 ```bash
 cd server
 npm install
 ```
 
-**3. Install client dependencies**
+### 3. Install Frontend Dependencies
+
+Open another terminal from the project root, then run:
 
 ```bash
-cd ../client
-npm install
-```
-
-**4. Configure environment variables**
-
-Create `server/.env` — see [Environment Variables](#-environment-variables) section below.
-
-**5. Start development servers**
-
-```bash
-# Terminal 1 — Backend (port 5000)
-cd server
-npm run dev
-
-# Terminal 2 — Frontend (port 5173)
 cd client
-npm run dev
+npm install
 ```
 
-**6. Open the app**
+### 4. Configure Environment Variables
 
-Navigate to **http://localhost:5173** in your browser.
-
----
-
-## 🔑 Environment Variables
-
-Create a `server/.env` file with the following variables:
+Create a `server/.env` file using the variable names expected by the backend configuration:
 
 ```env
-# Server
 PORT=5000
 NODE_ENV=development
 
-# Database
-MONGODB_URI=mongodb+srv://<user>:<password>@<cluster>.mongodb.net/lost-and-found?retryWrites=true&w=majority
+MONGODB_URI=your_mongodb_atlas_connection_string
 
-# Authentication
-JWT_SECRET=your-secret-key-minimum-32-characters-long
+JWT_SECRET=your_long_random_secret
 JWT_EXPIRE=7d
 
-# Cloudinary (Image Uploads)
 CLOUDINARY_CLOUD_NAME=your_cloud_name
-CLOUDINARY_API_KEY=your_api_key
-CLOUDINARY_API_SECRET=your_api_secret
+CLOUDINARY_API_KEY=your_cloudinary_api_key
+CLOUDINARY_API_SECRET=your_cloudinary_api_secret
 
-# Client URL (for CORS)
 CLIENT_URL=http://localhost:5173
 ```
 
-<details>
-<summary><strong>📋 How to get these values</strong></summary>
+**Important:** Check the backend source code for the exact environment variable names required by your current version. If your code uses a different name, use the one defined in the source.
 
-#### MongoDB Atlas
+Never commit real database credentials, API secrets, or private keys to GitHub.
 
-1. Create a free account at [mongodb.com/atlas](https://www.mongodb.com/atlas)
-2. Create a free M0 cluster
-3. Create a database user and whitelist your IP
-4. Click **Connect → Drivers → Node.js** and copy the connection string
-5. Replace `<password>` and add `/lost-and-found` before the `?`
+### 5. Start the Backend
 
-#### Cloudinary
+From the `server` directory:
 
-1. Create a free account at [cloudinary.com](https://cloudinary.com)
-2. From the dashboard, copy: **Cloud Name**, **API Key**, **API Secret**
-
-#### JWT Secret
-
-Use any random string, at least 32 characters. Example:
-
-```
-openssl rand -hex 32
+```bash
+npm run dev
 ```
 
-</details>
+The backend is expected to run on:
 
----
+```text
+http://localhost:5000
+```
 
-## 📡 API Reference
+If the development script is unavailable, check `server/package.json` for the configured start command.
 
-> Base URL: `http://localhost:5000/api`
+### 6. Start the Frontend
+
+From the `client` directory in a separate terminal:
+
+```bash
+npm run dev
+```
+
+Open the local URL printed by Vite, normally:
+
+```text
+http://localhost:5173
+```
+
+Your local CampusFind application should now be ready to test.
+
+## 📡 API Overview
+
+The following endpoints are documented by the project.
+
+Base URL:
+
+```text
+http://localhost:5000/api
+```
 
 ### Authentication
 
-| Method | Endpoint         | Description            | Auth |
-| :----- | :--------------- | :--------------------- | :--- |
-| `POST` | `/auth/register` | Create new account     | ❌   |
-| `POST` | `/auth/login`    | Login & receive cookie | ❌   |
-| `POST` | `/auth/logout`   | Clear auth cookie      | ✅   |
-| `GET`  | `/auth/me`       | Get current user       | ✅   |
+| Method | Endpoint | Description |
+|---|---|---|
+| POST | `/auth/register` | Register a user |
+| POST | `/auth/login` | Log in |
+| POST | `/auth/logout` | Log out |
+| GET | `/auth/me` | Get the current user |
 
 ### Items
 
-| Method   | Endpoint          | Description                           | Auth |
-| :------- | :---------------- | :------------------------------------ | :--- |
-| `GET`    | `/items`          | List items (search, filter, paginate) | ❌   |
-| `GET`    | `/items/:id`      | Get item details                      | ❌   |
-| `POST`   | `/items`          | Create item (multipart/form-data)     | ✅   |
-| `PUT`    | `/items/:id`      | Update own item                       | ✅   |
-| `DELETE` | `/items/:id`      | Delete own item                       | ✅   |
-| `GET`    | `/items/my-items` | Get current user's items              | ✅   |
-
-<details>
-<summary><strong>Query Parameters for GET /items</strong></summary>
-
-| Param      | Type   | Description                             | Example                 |
-| :--------- | :----- | :-------------------------------------- | :---------------------- |
-| `search`   | string | Full-text search on title & description | `?search=iphone`        |
-| `type`     | string | Filter by `lost` or `found`             | `?type=lost`            |
-| `category` | string | Filter by category                      | `?category=Electronics` |
-| `sort`     | string | `oldest` or newest (default)            | `?sort=oldest`          |
-| `page`     | number | Page number (default: 1)                | `?page=2`               |
-| `limit`    | number | Items per page (default: 12)            | `?limit=6`              |
-
-**Categories:** `Electronics`, `Books`, `Clothing`, `ID Cards`, `Keys`, `Accessories`, `Other`
-
-</details>
+| Method | Endpoint | Description |
+|---|---|---|
+| GET | `/items` | Browse, search, and filter items |
+| GET | `/items/:id` | Get item details |
+| POST | `/items` | Create an item listing |
+| PUT | `/items/:id` | Update your listing |
+| DELETE | `/items/:id` | Delete your listing |
+| GET | `/items/my-items` | Get your listings |
 
 ### Claims
 
-| Method  | Endpoint              | Description           | Auth |
-| :------ | :-------------------- | :-------------------- | :--- |
-| `POST`  | `/claims`             | Submit a claim        | ✅   |
-| `GET`   | `/claims/received`    | Claims on your items  | ✅   |
-| `GET`   | `/claims/sent`        | Your submitted claims | ✅   |
-| `PATCH` | `/claims/:id/respond` | Approve or reject     | ✅   |
+| Method | Endpoint | Description |
+|---|---|---|
+| POST | `/claims` | Submit a claim |
+| GET | `/claims/received` | View claims on your items |
+| GET | `/claims/sent` | View your submitted claims |
+| PATCH | `/claims/:id/respond` | Respond to a claim |
 
-### Users
+### User Profile & Dashboard
 
-| Method | Endpoint         | Description          | Auth |
-| :----- | :--------------- | :------------------- | :--- |
-| `PUT`  | `/users/profile` | Update profile       | ✅   |
-| `GET`  | `/users/stats`   | Dashboard statistics | ✅   |
+| Method | Endpoint | Description |
+|---|---|---|
+| PUT | `/users/profile` | Update your profile |
+| GET | `/users/stats` | Retrieve dashboard statistics |
 
----
+Protected endpoints require the authentication mechanism configured by the backend.
 
-## 📂 Project Structure
+## 📁 Project Structure
 
-```
-lost-and-found-portal/
-│
-├── client/                          # ── Frontend (React + Vite) ──
+```text
+CampusFind/
+├── client/
 │   ├── public/
 │   ├── src/
 │   │   ├── components/
-│   │   │   ├── common/
-│   │   │   │   └── ProtectedRoute.jsx    # Auth guard for routes
-│   │   │   ├── items/
-│   │   │   │   └── ItemCard.jsx          # Reusable item card
-│   │   │   └── layout/
-│   │   │       ├── Navbar.jsx            # Responsive navigation
-│   │   │       └── Footer.jsx            # Footer component
 │   │   ├── context/
-│   │   │   └── AuthContext.jsx           # Global auth state
 │   │   ├── pages/
-│   │   │   ├── auth/
-│   │   │   │   ├── Login.jsx             # Login form
-│   │   │   │   └── Register.jsx          # Registration form
-│   │   │   ├── Dashboard.jsx             # User dashboard
-│   │   │   ├── Home.jsx                  # Landing page
-│   │   │   ├── ItemDetail.jsx            # Item detail + claim
-│   │   │   ├── Items.jsx                 # Browse + search + filter
-│   │   │   ├── NotFound.jsx              # 404 page
-│   │   │   └── PostItem.jsx              # Create/edit item form
 │   │   ├── utils/
-│   │   │   └── api.js                    # Axios instance
-│   │   ├── App.jsx                       # Router + route config
-│   │   ├── index.css                     # Tailwind imports + theme
-│   │   └── main.jsx                      # Entry point
+│   │   ├── App.jsx
+│   │   ├── index.css
+│   │   └── main.jsx
 │   ├── index.html
-│   ├── vite.config.js                    # Vite + Tailwind + proxy
+│   ├── vite.config.js
 │   └── package.json
 │
-├── server/                          # ── Backend (Express + MongoDB) ──
+├── server/
 │   ├── config/
-│   │   ├── cloudinary.js                 # Cloudinary SDK config
-│   │   └── db.js                         # MongoDB connection
 │   ├── controllers/
-│   │   ├── auth.controller.js            # Register, login, logout, me
-│   │   ├── claim.controller.js           # CRUD + approve/reject
-│   │   ├── item.controller.js            # CRUD + search + filters
-│   │   └── user.controller.js            # Profile + stats
 │   ├── middleware/
-│   │   ├── auth.js                       # JWT verification
-│   │   ├── error.js                      # Global error handler
-│   │   └── upload.js                     # Multer config
 │   ├── models/
-│   │   ├── Claim.js                      # Claim schema
-│   │   ├── Item.js                       # Item schema + indexes
-│   │   └── User.js                       # User schema + bcrypt
 │   ├── routes/
-│   │   ├── auth.routes.js
-│   │   ├── claim.routes.js
-│   │   ├── item.routes.js
-│   │   └── user.routes.js
 │   ├── utils/
-│   │   ├── ApiError.js                   # Custom error class
-│   │   └── asyncHandler.js               # Async route wrapper
-│   ├── app.js                            # Express app setup
-│   ├── server.js                         # Entry point
+│   ├── app.js
+│   ├── server.js
 │   └── package.json
 │
 ├── .gitignore
 └── README.md
 ```
 
----
+## 🗄️ Database Design
+
+MongoDB stores the application's core data using collections for:
+
+- **Users:** Account and profile information.
+- **Items:** Lost and found listings, descriptions, categories, and image references.
+- **Claims:** Ownership claim messages, status, and relationships to users and items.
+
+Mongoose provides the data models and database interaction layer. Refer to the model files in `server/models/` for the exact schema definitions.
+
+## 🔒 Security Notes
+
+- Passwords should be stored as hashes rather than plain text.
+- Authentication tokens should be handled securely.
+- HTTP-only cookies help prevent JavaScript from reading authentication cookies.
+- Protected routes should verify user authorization.
+- Environment files containing secrets must remain out of version control.
+- Database access should be restricted through appropriate MongoDB Atlas network and database-user settings.
 
 ## 🌐 Deployment
 
-### Backend → Render (Free)
+CampusFind can be adapted for deployment using services such as:
 
-1. Create an account on [render.com](https://render.com)
-2. New → **Web Service** → connect GitHub repo
-3. Configure:
-   - **Root Directory:** `server`
-   - **Build Command:** `npm install`
-   - **Start Command:** `node server.js`
-4. Add all environment variables from your `.env`
-5. Set `CLIENT_URL` to your Vercel frontend URL
+- **Frontend:** [Vercel](https://vercel.com/)
+- **Backend:** [Render](https://render.com/)
+- **Database:** [MongoDB Atlas](https://www.mongodb.com/atlas)
+- **Image hosting:** [Cloudinary](https://cloudinary.com/)
 
-### Frontend → Vercel (Free)
+Before deployment, configure production environment variables, frontend API URLs, CORS settings, and cookie security options. Test authentication and image uploads in the deployed environment.
 
-1. Create an account on [vercel.com](https://vercel.com)
-2. Import your GitHub repository
-3. Configure:
-   - **Framework:** Vite
-   - **Root Directory:** `client`
-   - **Build Command:** `npm run build`
-   - **Output Directory:** `dist`
-4. Add environment variable:
-   - `VITE_API_URL` = your Render backend URL + `/api`
+*Deployment has to be configured separately; the repository link alone does not mean the application is live.*
 
----
+## 🔮 Future Enhancements
 
-## 🗄 Database Schema
-
-```mermaid
-erDiagram
-    USER ||--o{ ITEM : posts
-    USER ||--o{ CLAIM : submits
-    ITEM ||--o{ CLAIM : receives
-
-    USER {
-        ObjectId _id
-        String name
-        String email
-        String password
-        String avatar
-        Date createdAt
-    }
-
-    ITEM {
-        ObjectId _id
-        String title
-        String description
-        Enum type
-        Enum category
-        Array images
-        String location
-        Date dateLostOrFound
-        Object contactInfo
-        Enum status
-        ObjectId postedBy
-        Date createdAt
-    }
-
-    CLAIM {
-        ObjectId _id
-        ObjectId item
-        ObjectId claimant
-        String message
-        Enum status
-        Date createdAt
-    }
-```
-
----
+- Email notifications for claim updates.
+- Admin dashboard and moderation tools.
+- Item status tracking for resolved cases.
+- Campus-specific access and verification.
+- Improved accessibility and automated tests.
+- Optional real-time notifications.
 
 ## 🤝 Contributing
 
-Contributions are welcome! Here's how:
+Contributions and suggestions are welcome.
 
-1. **Fork** the repository
-2. **Create** a feature branch: `git checkout -b feat/amazing-feature`
-3. **Commit** your changes: `git commit -m 'feat: add amazing feature'`
-4. **Push** to the branch: `git push origin feat/amazing-feature`
-5. **Open** a Pull Request
+1. Fork the repository.
+2. Create a feature branch:
 
-Please follow the existing commit message convention: `type(scope): description`
+   ```bash
+   git checkout -b feat/your-feature
+   ```
+
+3. Commit your changes:
+
+   ```bash
+   git commit -m "feat: describe your change"
+   ```
+
+4. Push the branch:
+
+   ```bash
+   git push origin feat/your-feature
+   ```
+
+5. Open a Pull Request.
+
+## 👨‍💻 Author
+
+**Shivam Kumar Mishra**
+
+GitHub: [@shivamkmishra98](https://github.com/shivamkmishra98)
+
+Project: [CampusFind](https://github.com/shivamkmishra98/CampusFind)
 
 ---
 
-<div align="center">
-
-**Built with ❤️ as a full-stack MERN portfolio project**
-
-</div>
+<p align="center">
+  Built with ❤️ to help campus communities reconnect with their belongings.
+</p>
